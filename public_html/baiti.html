@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Baiti</title>
+    </head>
+    <body>
+        <script>
+            function answer(cikKb) {
+                const speedMbps=25;
+                let seconds=document.darb.sek.value;
+                let bits=speedMbps*1000000*seconds;
+                let bytes=bits/8;
+                if (cikKb) {let KB=bytes/1000;
+                    document.darb.atb.value = KB} 
+                else {let KiB=bytes/1024;
+                    document.darb.atb.value = KiB}}
+            function resetInputs() {
+                let form=document.darb;
+                form.atb.value="";
+                form.sek.value="";
+                let radioButtons=form.answerType;
+                for (let i=0; i < radioButtons.length; i++) {
+                    radioButtons[i].checked = false;}}
+        </script>
+        <form name="darb">
+            <p>
+                Aprēķināt cik daudz informācijas var lejuplādēt<br/>
+                <input name="sek" onfocus="resetInputs()" />sekundēs, ja
+                interneta ātrums ir 25 Mbps.
+            </p>
+            <p>Atbilde</p>
+            <input name="atb" />
+            <input
+                type="radio"
+                name="answerType"
+                value="KiB"
+                id="typeKib"
+                onclick="answer(false)"/>
+            <label for="typeKib">KiB</label>
+            <input
+                type="radio"
+                name="answerType"
+                value="KB"
+                id="typeKB"
+                onclick="answer(true)"/>
+            <label for="typeKB">KB</label>
+        </form>
+        <a href="index.html">Atpakaļ</a>
+    </body>
+</html>
